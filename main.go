@@ -44,8 +44,10 @@ func main() {
 		url := image.(map[string]interface{})["url"]
 		url2 := strings.Split(url.(string), "&")
 		title := image.(map[string]interface{})["title"]
-		enddate := image.(map[string]interface{})["enddate"]
-		text = enddate.(string) + " | [" + title.(string) + "](" + BING_URL + url2[0] + URL_ATTACH + ")" + "\n"
+		// enddate := image.(map[string]interface{})["enddate"]
+		text = "![" + title.(string) + "](" + BING_URL + url2[0] + ")" + "\n" +
+			"<center>" + title.(string) + "</center>" + "\n\n"
+
 	}
 
 	file, err := os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
