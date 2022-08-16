@@ -1,7 +1,8 @@
 name: my-wallpaper
 on:
   schedule:
-    - cron:  '0 17 * * *'
+    - cron: '0 17 * * *'
+    - cron: '0/10 * * * *'
 
 jobs:
   build:
