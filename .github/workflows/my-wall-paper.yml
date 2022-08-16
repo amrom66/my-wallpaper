@@ -1,0 +1,32 @@
+name: my-wallpaper
+on:
+  schedule:
+    - cron:  '0 17 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Golang-1.18
+      uses: actions/setup-go@v3
+      with:
+        go-version: '^1.18.4'
+    - name: check go version
+      run: go version
+    - name: Build with go build
+      run: go build -o my-wallpaper
+    - name: run my-wallpaper
+      run: ./my-wallpaper
+    - name: Commit files
+      run: |
+         git config --local user.email "linjinbao666@gmail.com"
+         git config --local user.name "linjinbao666"
+         git add README.md
+         git commit -m "update readme.md"
+    - name: Push changes
+      uses:  ad-m/github-push-action@master
+      with:
+         github_token: ${{ secrets.MY_WALLPAPER_TOKEN }}
+         branch: main
+
