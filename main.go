@@ -56,8 +56,7 @@ func main() {
 		url2 = strings.Split(url, "&")[0]
 		title = image.(map[string]interface{})["title"].(string)
 		enddate = image.(map[string]interface{})["enddate"].(string)
-		text = "![" + title + "](" + BING_URL + url2 + ")" + "\n" +
-			"<center>" + title + "</center>" + "\n\n"
+		text = "\n" + "![" + title + "](" + BING_URL + url2 + URL_ATTACH + ")" + "\n"
 		name = strings.Split(url2, "=")[1]
 
 		os.MkdirAll(IMAGES+"/"+enddate, os.ModePerm)
@@ -69,8 +68,10 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
+
+		Write2Readme(text)
 	}
-	Write2Readme(text)
+
 }
 
 func Write2Readme(text string) {
