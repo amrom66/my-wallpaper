@@ -2,11 +2,12 @@ package main
 
 import (
 	"bufio"
-	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -45,18 +46,34 @@ func main() {
 	images := result["images"]
 	var text string
 	var enddate string
+	var url string
 	var url2 string
 	var title string
+	var name string
 
 	for _, image := range images.([]interface{}) {
-		url := image.(map[string]interface{})["url"]
-		url2 := strings.Split(url.(string), "&")[0]
+		url = image.(map[string]interface{})["url"].(string)
+		url2 = strings.Split(url, "&")[0]
 		title = image.(map[string]interface{})["title"].(string)
 		enddate = image.(map[string]interface{})["enddate"].(string)
 		text = "![" + title + "](" + BING_URL + url2 + ")" + "\n" +
 			"<center>" + title + "</center>" + "\n\n"
-	}
+		name = strings.Split(url2, "=")[1]
 
+		os.MkdirAll(IMAGES+"/"+enddate, os.ModePerm)
+		fmt.Println("url: " + url)
+		fmt.Println("url2: " + url2)
+		URL := BING_URL + url2
+		fileName := name
+		err = DownloadFile(URL, IMAGES+"/"+enddate+"/"+fileName)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+	Write2Readme(text)
+}
+
+func Write2Readme(text string) {
 	file, err := os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		fmt.Println("file open failed", err)
@@ -66,31 +83,32 @@ func main() {
 	writer := bufio.NewWriter(file)
 	writer.WriteString(text)
 	writer.Flush()
-	err = os.MkdirAll(IMAGES+"/"+enddate, os.ModePerm)
-	if err != nil {
-		fmt.Println("mkdir failed", err)
-		return
-	}
-	filename, err := DownloadImage(BING_URL+url2, strings.Join([]string{IMAGES, enddate}, "/"), title)
-	if err != nil {
-		fmt.Println("download failed", err)
-		return
-	}
-	fmt.Println("download success", filename)
 }
 
-func DownloadImage(imgUrl string, path string, name string) (filename string, err error) {
-	filename = path + "/" + name + ".jpg"
-	res, err := http.Get(imgUrl)
+func DownloadFile(URL, fileName string) error {
+	//Get the response bytes from the url
+	fmt.Println(URL)
+	response, err := http.Get(URL)
 	if err != nil {
-		fmt.Println("A error occurred!")
-		return
+		return err
 	}
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-	out, _ := os.Create(filename)
-	io.Copy(out, bytes.NewReader(body))
+	defer response.Body.Close()
 
-	out.Close()
-	return
+	if response.StatusCode != 200 {
+		return errors.New("Received non 200 response code")
+	}
+	//Create a empty file
+	file, err := os.Create(fileName)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	//Write the bytes to the fiel
+	_, err = io.Copy(file, response.Body)
+	if err != nil {
+		return err
+	}
+	fmt.Println("File downlaod in current working directory", fileName)
+	return nil
 }
