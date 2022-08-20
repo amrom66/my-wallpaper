@@ -13,3 +13,5 @@
 ![Home of the world's worst-smelling food?](https://bing.com/th?id=OHR.SourHerring_EN-US2672490827_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
 
 ![A flight to remember](https://bing.com/th?id=OHR.SolarImpulse2_EN-US2864472613_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
+
+![Saving and celebrating honey bees](https://bing.com/th?id=OHR.BearProof_EN-US2982363241_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
