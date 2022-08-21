@@ -15,3 +15,5 @@
 ![A flight to remember](https://bing.com/th?id=OHR.SolarImpulse2_EN-US2864472613_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
 
 ![Saving and celebrating honey bees](https://bing.com/th?id=OHR.BearProof_EN-US2982363241_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
+
+![The Coast of Death](https://bing.com/th?id=OHR.CostadaMorte_EN-US3132736041_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
