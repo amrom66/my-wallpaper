@@ -25,3 +25,5 @@
 ![Amber waves of grain](https://bing.com/th?id=OHR.WheatField_EN-US3537753695_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
 
 ![America's backyard](https://bing.com/th?id=OHR.CascadesNP_EN-US3684575794_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
+
+![Add wind, combine with water, and you'll get...](https://bing.com/th?id=OHR.PeljesacWind_EN-US5380116190_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
