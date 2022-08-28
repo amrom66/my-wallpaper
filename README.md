@@ -29,3 +29,5 @@
 ![Add wind, combine with water, and you'll get...](https://bing.com/th?id=OHR.PeljesacWind_EN-US5380116190_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
 
 ![The recovery continues](https://bing.com/th?id=OHR.MSHV_EN-US5482864526_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
+
+![More of a mustache than a beard?](https://bing.com/th?id=OHR.BeardedTit_EN-US6692547915_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
