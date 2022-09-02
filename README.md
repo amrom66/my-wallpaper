@@ -39,3 +39,5 @@
 ![How sweet to be a star, floating in the blue](https://bing.com/th?id=OHR.BlueLinckia_EN-US7078787133_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
 
 ![Who uses this grassy bridge?](https://bing.com/th?id=OHR.WildlifeCrossing_EN-US7691052130_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
+
+![This magical beach is worth the hike](https://bing.com/th?id=OHR.SeitanLimania_EN-US5452823219_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
