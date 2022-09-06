@@ -47,3 +47,5 @@
 ![The Riviera of India](https://bing.com/th?id=OHR.ArambolBeach_EN-US7908449198_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
 
 ![Celebrating workers' fights and rights](https://bing.com/th?id=OHR.GastoniaParade_EN-US8873564493_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
+
+![A real fun guy…er, squirrel](https://bing.com/th?id=OHR.SquirrelMushroom_EN-US8955570535_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
