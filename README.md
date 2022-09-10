@@ -53,3 +53,5 @@
 ![500th anniversary of the world getting smaller](https://bing.com/th?id=OHR.CircumnavigationAnni_EN-US9635067459_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
 
 ![The other great barrier reef](https://bing.com/th?id=OHR.BHNMBelize_EN-US6404020386_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
+
+![Looking starry-eyed at the moon](https://bing.com/th?id=OHR.KLMidAutumn_EN-US6642842911_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
