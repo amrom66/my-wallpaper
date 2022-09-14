@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/json"
-	"errors"
+	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -17,28 +17,23 @@ import (
 const BING_API = "https://bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&nc=1612409408851&pid=hp&FORM=BEHPTB&uhd=1&uhdwidth=3840&uhdheight=2160"
 const BING_URL = "https://bing.com"
 const URL_ATTACH = "&pid=hp&w=384&h=216&rs=1&c=4"
+const IMAGES = "images"
+const README = "README.md"
 
 var result map[string]interface{}
 
-const filePath = "README.md"
-
-const IMAGES = "images"
+var (
+	filepath string
+	random   bool
+)
 
 func main() {
+	flag.Parse()
 	c := http.Client{Timeout: time.Duration(1) * time.Second}
-	resp, err := c.Get(BING_API)
-	if err != nil {
-		fmt.Printf("Error %s", err)
-		return
-	}
+	resp, _ := c.Get(BING_API)
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-
-	if err != nil {
-		fmt.Printf("Error %s", err)
-		return
-	}
-	err = json.Unmarshal([]byte(body), &result)
+	body, _ := ioutil.ReadAll(resp.Body)
+	err := json.Unmarshal([]byte(body), &result)
 	if err != nil {
 		fmt.Printf("Error %s", err)
 		return
@@ -64,18 +59,18 @@ func main() {
 		fmt.Println("url2: " + url2)
 		URL := BING_URL + url2
 		fileName := name
-		err = DownloadFile(URL, IMAGES+"/"+enddate+"/"+fileName)
+		err = download(URL, IMAGES+"/"+enddate+"/"+fileName)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		Write2Readme(text)
+		readme(text)
 	}
 
 }
 
-func Write2Readme(text string) {
-	file, err := os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+func readme(text string) {
+	file, err := os.OpenFile(README, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		fmt.Println("file open failed", err)
 	}
@@ -86,30 +81,26 @@ func Write2Readme(text string) {
 	writer.Flush()
 }
 
-func DownloadFile(URL, fileName string) error {
-	//Get the response bytes from the url
+func download(URL, name string) error {
 	fmt.Println(URL)
-	response, err := http.Get(URL)
-	if err != nil {
-		return err
-	}
+	response, _ := http.Get(URL)
 	defer response.Body.Close()
-
 	if response.StatusCode != 200 {
-		return errors.New("Received non 200 response code")
+		return nil
 	}
-	//Create a empty file
-	file, err := os.Create(fileName)
+	file, err := os.Create(name)
 	if err != nil {
 		return err
 	}
 	defer file.Close()
-
-	//Write the bytes to the fiel
 	_, err = io.Copy(file, response.Body)
 	if err != nil {
 		return err
 	}
-	fmt.Println("File downlaod in current working directory", fileName)
 	return nil
+}
+
+func init() {
+	flag.StringVar(&filepath, "filepath", "README.md", "write to file")
+	flag.BoolVar(&random, "random", false, "if true, random image")
 }
