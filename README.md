@@ -5,3 +5,7 @@
 ![モリーズ・ピアのローラーコースター](https://bing.com/th?id=OHR.GreatWhiteRoller_JA-JP4421775087_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
 
 ![モリーズ・ピアのローラーコースター](https://bing.com/th?id=OHR.GreatWhiteRoller_JA-JP4421775087_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
+
+![Bridging the gap two ways](https://bing.com/th?id=OHR.MarbleCanyon_EN-US7056773172_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)
+
+![Bridging the gap two ways](https://bing.com/th?id=OHR.MarbleCanyon_EN-US7056773172_UHD.jpg&pid=hp&w=384&h=216&rs=1&c=4)

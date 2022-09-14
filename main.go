@@ -30,19 +30,10 @@ var (
 func main() {
 	flag.Parse()
 	c := http.Client{Timeout: time.Duration(1) * time.Second}
-	resp, err := c.Get(BING_API)
-	if err != nil {
-		fmt.Printf("Error %s", err)
-		return
-	}
+	resp, _ := c.Get(BING_API)
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-
-	if err != nil {
-		fmt.Printf("Error %s", err)
-		return
-	}
-	err = json.Unmarshal([]byte(body), &result)
+	body, _ := ioutil.ReadAll(resp.Body)
+	err := json.Unmarshal([]byte(body), &result)
 	if err != nil {
 		fmt.Printf("Error %s", err)
 		return
@@ -68,17 +59,17 @@ func main() {
 		fmt.Println("url2: " + url2)
 		URL := BING_URL + url2
 		fileName := name
-		err = DownloadFile(URL, IMAGES+"/"+enddate+"/"+fileName)
+		err = download(URL, IMAGES+"/"+enddate+"/"+fileName)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		Write2Readme(text)
+		readme(text)
 	}
 
 }
 
-func Write2Readme(text string) {
+func readme(text string) {
 	file, err := os.OpenFile(README, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		fmt.Println("file open failed", err)
@@ -90,17 +81,14 @@ func Write2Readme(text string) {
 	writer.Flush()
 }
 
-func DownloadFile(URL, fileName string) error {
+func download(URL, name string) error {
 	fmt.Println(URL)
-	response, err := http.Get(URL)
-	if err != nil {
-		return err
-	}
+	response, _ := http.Get(URL)
 	defer response.Body.Close()
 	if response.StatusCode != 200 {
 		return nil
 	}
-	file, err := os.Create(fileName)
+	file, err := os.Create(name)
 	if err != nil {
 		return err
 	}
@@ -109,7 +97,6 @@ func DownloadFile(URL, fileName string) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println("File downlaod in current working directory", fileName)
 	return nil
 }
 
